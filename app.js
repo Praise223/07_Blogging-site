@@ -1,5 +1,5 @@
 //Requiring the installed modules
-require("dotnev").config()
+require("dotenv").config()
 const ejs = require("ejs")
 const mongoose = require("mongoose")
 const express = require ("express")
@@ -12,9 +12,7 @@ const app = express()
 
 mongoose.connect("mongodb+srv://MyFirstBlog:Qod0uOkv48cztlyJ@nodeapps.urxugm6.mongodb.net/blog")
 .then(()=>{
-    app.listen(3000, ()=>{
-        console.log("Connected!...");
-    })
+    console.log("database connected");
 }).catch((err)=>{
     console.log(err, "Database Connectiion Failed!")
 })
@@ -73,9 +71,10 @@ app.get("/blogs", async(req, res)=>{
     const allPosts = await blogSchema.find()
 
     res.render("blogs", {posts: allPosts})
+})
+
 const port = process.env.PORT || 3000
 
 app.listen(port, ()=>{
-    console.log('App started on port 3000'+ " "+ port);
-})
+    console.log('App started on port 3000 ${port}');
 })
