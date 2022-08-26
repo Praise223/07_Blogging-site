@@ -1,7 +1,9 @@
 //Requiring the installed modules
+require("dotnev").config()
 const ejs = require("ejs")
 const mongoose = require("mongoose")
 const express = require ("express")
+
 // Ending of requiring the installed modules
 
 
@@ -71,4 +73,9 @@ app.get("/blogs", async(req, res)=>{
     const allPosts = await blogSchema.find()
 
     res.render("blogs", {posts: allPosts})
+const port = process.env.PORT || 3000
+
+app.listen(port, ()=>{
+    console.log('App started on port 3000'+ " "+ port);
+})
 })
