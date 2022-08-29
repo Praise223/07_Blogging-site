@@ -10,7 +10,7 @@ const express = require ("express")
 
 const app = express()
 
-mongoose.connect("mongodb+srv://MyFirstBlog:Qod0uOkv48cztlyJ@nodeapps.urxugm6.mongodb.net/blog")
+mongoose.connect(process.env.MONGODB)
 .then(()=>{
     console.log("database connected");
 }).catch((err)=>{
